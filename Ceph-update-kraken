@@ -11,6 +11,7 @@ pip install --upgrade pip
 apt remove -y ceph-deploy 
 
 
+
 #installing jewel packages
 wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
 apt-add-repository 'deb https://download.ceph.com/debian-jewel/ trusty main'
@@ -18,29 +19,36 @@ apt update
 env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install ca-certificates apt-transport-https
 env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph-osd ceph-mds ceph-mon radosgw
 
-#after installing non-mos packages, /var/lib/ceph owned by root, we need to change owner to ceph
-chown -R ceph:ceph /var/lib/ceph/
-chown -R ceph:ceph /var/log/ceph/
 
-#restarting services
+#stoping services
 stop ceph-mon-all
-start ceph-mon-all
 stop ceph-osd-all
+killall ceph-osd
+#after installing non-mos packages, /var/lib/ceph owned by root, we need to change owner to ceph
+chown -R ceph:ceph /var/lib/ceph
+chown -R ceph:ceph /var/log/ceph
+
+
+start ceph-mon-all
 for ID in $(ls /var/lib/ceph/osd/|cut -d '-' -f 2); do
     stop ceph-osd id=$ID
     start ceph-osd id=$ID
 done
-sed -i 's/.*jewel.*//g' /etc/apt/sources.list
 
-#Wait for end of recovery
-watch 'ceph -s | egrep "recovery .* degraded"'
-# At this point, VMs with ceph backend may stay in shutoff status, and u will need to start them manually via virsh on compute nodes ( or probably reboot these nodes).
-virsh list --all | grep shut | awk '{print $ 2}' | xargs -n 1 virsh start
 
-#set flag sortbitwise flag
+#set new crush tune and flags
+ceph osd crush tunables optimal
+ceph osd set require_jewel_osds
 ceph osd set sortbitwise
 #Wait for end of recovery
-watch 'ceph -s | egrep "recovery .* degraded"'
+watch 'ceph -s | egrep "recovery| degraded"'
+
+sed -i 's/.*jewel.*//g' /etc/apt/sources.list
+
+# At this point, we need to restart nova-compute. but if VMs with ceph backend still stay in shutoff status, u will need to start them manually via virsh on compute nodes ( or probably reboot these nodes).
+service nova-compute restart
+#virsh list --all | grep shut | awk '{print $ 2}' | xargs -n 1 virsh start
+
 
 
 ##################################################### JEWEL TO KRAKEN ###########################################################################################################################################
