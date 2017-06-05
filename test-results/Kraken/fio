@@ -1,0 +1,36 @@
+root@cz758-ceph01:/opt/fio# ./fio examples/rbd.fio
+rbd_iodepth32: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=rbd, iodepth=32
+fio-2.20-32-g9af5a
+Starting 1 process
+./fio examples/rbd.fio11.5%][r=0KiB/s,w=520KiB/s][r=0,w=130 IOPS][eta 20m:59s]  
+Jobs: 1 (f=1): [f(1)][100.0%][r=0KiB/s,w=2156KiB/s][r=0,w=539 IOPS][eta 00m:00s]s]
+rbd_iodepth32: (groupid=0, jobs=1): err= 0: pid=1309956: Mon Jun  5 11:48:28 2017
+  write: IOPS=396, BW=1585KiB/s (1623kB/s)(2048MiB/1323323msec)
+    slat (usec): min=1, max=3273, avg= 5.13, stdev= 7.62
+    clat (msec): min=4, max=1505, avg=80.62, stdev=153.02
+     lat (msec): min=4, max=1505, avg=80.62, stdev=153.02
+    clat percentiles (msec):
+     |  1.00th=[   14],  5.00th=[   17], 10.00th=[   18], 20.00th=[   19],
+     | 30.00th=[   20], 40.00th=[   21], 50.00th=[   25], 60.00th=[   34],
+     | 70.00th=[   38], 80.00th=[   55], 90.00th=[  253], 95.00th=[  461],
+     | 99.00th=[  742], 99.50th=[  832], 99.90th=[ 1045], 99.95th=[ 1139],
+     | 99.99th=[ 1303]
+   bw (  KiB/s): min=    2, max=  944, per=0.01%, avg=151.65, stdev=81.38
+    lat (msec) : 10=0.13%, 20=37.09%, 50=41.45%, 100=7.26%, 250=4.03%
+    lat (msec) : 500=5.86%, 750=3.24%, 1000=0.81%, 2000=0.14%
+  cpu          : usr=0.30%, sys=0.04%, ctx=48300, majf=0, minf=24773
+  IO depths    : 1=0.4%, 2=1.4%, 4=4.9%, 8=18.7%, 16=68.6%, 32=6.1%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=95.4%, 8=0.4%, 16=1.2%, 32=3.0%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,524288,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+  WRITE: bw=1585KiB/s (1623kB/s), 1585KiB/s-1585KiB/s (1623kB/s-1623kB/s), io=2048MiB (2147MB), run=1323323-1323323msec
+
+Disk stats (read/write):
+    dm-0: ios=0/10002, merge=0/0, ticks=0/2828, in_queue=2900, util=0.09%, aggrios=0/10286, aggrmerge=0/0, aggrticks=0/0, aggrin_queue=0, aggrutil=0.00%
+    md124: ios=0/10286, merge=0/0, ticks=0/0, in_queue=0, util=0.00%, aggrios=33/5106, aggrmerge=0/5177, aggrticks=4/3372, aggrin_queue=3528, aggrutil=0.10%
+  sdi: ios=44/5106, merge=0/5177, ticks=8/3296, in_queue=3452, util=0.09%
+  sdj: ios=22/5106, merge=0/5177, ticks=0/3448, in_queue=3604, util=0.10%
+

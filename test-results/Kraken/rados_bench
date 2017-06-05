@@ -1,0 +1,77 @@
+#### rados bench -p scbench 10 write --no-cleanup
+hints = 1
+Maintaining 16 concurrent writes of 4194304 bytes to objects of size 4194304 for up to 10 seconds or 0 objects
+Object prefix: benchmark_data_cz758-ceph01.domain.tld_1300557
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      16       108        92   367.972       368    0.162052    0.149567
+    2      16       189       173   345.968       324     0.13834    0.175427
+    3      16       261       245   326.633       288    0.184705    0.188842
+    4      16       310       294    293.97       196    0.460952    0.211393
+    5      16       371       355   283.971       244    0.505381    0.220319
+    6      16       430       414   275.971       236    0.208863    0.222952
+    7      16       492       476   271.971       248     0.17303    0.230037
+    8      16       538       522   260.972       184     0.13015    0.226814
+    9      16       580       564   250.639       168     0.52832    0.248578
+   10      16       639       623   249.172       236     0.21482     0.25382
+Total time run:         10.228927
+Total writes made:      640
+Write size:             4194304
+Object size:            4194304
+Bandwidth (MB/sec):     250.271
+Stddev Bandwidth:       62.5971
+Max bandwidth (MB/sec): 368
+Min bandwidth (MB/sec): 168
+Average IOPS:           62
+Stddev IOPS:            15
+Max IOPS:               92
+Min IOPS:               42
+Average Latency(s):     0.255219
+Stddev Latency(s):      0.19381
+Max latency(s):         1.68667
+Min latency(s):         0.0616216
+
+#### rados bench -p scbench 10 seq
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      16       551       535   2139.58      2140   0.0044086   0.0280391
+Total time run:       1.204568
+Total reads made:     640
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   2125.24
+Average IOPS:         531
+Stddev IOPS:          0
+Max IOPS:             535
+Min IOPS:             535
+Average Latency(s):   0.0292147
+Max latency(s):       0.180219
+Min latency(s):       0.00362633
+
+#### rados bench -p scbench 10 rand
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      16       514       498   1991.62      1992  0.00543123   0.0303279
+    2      16      1028      1012   2023.69      2056    0.050398   0.0303621
+    3      16      1538      1522   2029.06      2040   0.0885622   0.0304542
+    4      16      2070      2054   2053.75      2128   0.0284714   0.0302216
+    5      15      2627      2612   2089.36      2232   0.0124219   0.0297087
+    6      15      3197      3182    2121.1      2280  0.00627433   0.0293298
+    7      16      3740      3724   2127.76      2168  0.00665548   0.0292299
+    8      15      4261      4246   2122.76      2088   0.0128234    0.029314
+    9      15      4793      4778   2123.31      2128  0.00555741   0.0293427
+   10      16      5353      5337   2134.55      2236   0.0373454   0.0291615
+Total time run:       10.046321
+Total reads made:     5354
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   2131.73
+Average IOPS:         532
+Stddev IOPS:          23
+Max IOPS:             570
+Min IOPS:             498
+Average Latency(s):   0.0292763
+Max latency(s):       0.267056
+Min latency(s):       0.00316185

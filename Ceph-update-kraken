@@ -17,8 +17,12 @@ wget -q -O- 'https://download.ceph.com/keys/release.asc' | sudo apt-key add -
 apt-add-repository 'deb https://download.ceph.com/debian-jewel/ trusty main'
 apt update
 env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install ca-certificates apt-transport-https
-env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph-osd ceph-mds ceph-mon radosgw
 
+#ceph nodes
+env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph-osd ceph-mds radosgw
+
+#ceph-mon (controllers) nodes
+env DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical apt-get --assume-yes -q --no-install-recommends install -o Dpkg::Options::=--force-confnew ceph-mon radosgw
 
 #stoping services
 stop ceph-mon-all
@@ -73,6 +77,9 @@ ceph osd set require_kraken_osds
 #return mirantis repos and ceph-deploy tool
 apt -y install ceph-deploy=1.5.37
 mv ceph_upgrade/apt-lists/* /etc/apt/sources.list.d/
+
+#restart all services on all nodes
+for i in nova-api nova-compute cinder-api cinder-volume glance-api cinder-scheduler nova-scheduler; do service $i restart; done
 
 #optional, u can set optimal or jewel crush map tunatable
 ceph osd crush tunables jewel
