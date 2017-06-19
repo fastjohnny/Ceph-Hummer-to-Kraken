@@ -1,0 +1,83 @@
+#### rados bench -p scbench 100 write --no-cleanup
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+  100      16      5407      5391   215.606       304   0.0820582    0.296309
+Total time run:         100.558206
+Total writes made:      5408
+Write size:             4194304
+Object size:            4194304
+Bandwidth (MB/sec):     215.119
+Stddev Bandwidth:       112.491
+Max bandwidth (MB/sec): 392
+Min bandwidth (MB/sec): 16
+Average IOPS:           53
+Stddev IOPS:            28
+Max IOPS:               98
+Min IOPS:               4
+Average Latency(s):     0.296779
+Stddev Latency(s):      0.332318
+Max latency(s):         2.08949
+Min latency(s):         0.0312375
+
+#### rados bench -p scbench 10 seq
+root@ift-ctr01:~# rados bench -p scbench 10 seq
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+
+    1      16       886       870   3478.62      3480   0.0128392   0.0173281
+    2      16      1790      1774   3545.17      3616    0.016158   0.0170963
+    3      15      2702      2687   3579.98      3652   0.0207903   0.0169752
+    4      15      3590      3575   3572.52      3552    0.027901   0.0170331
+    5      15      4469      4454   3560.62      3516  0.00822393   0.0170894
+    6      15      5370      5355   3566.93      3604    0.020048   0.0170712
+Total time run:       6.065203
+Total reads made:     5408
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   3566.57
+Average IOPS:         891
+Stddev IOPS:          16
+Max IOPS:             913
+Min IOPS:             870
+Average Latency(s):   0.0170744
+Max latency(s):       0.0600337
+Min latency(s):       0.00497234
+
+#### rados bench -p scbench 20 rand
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      15       879       864   3455.21      3456   0.0112342   0.0174392
+    2      15      1795      1780   3559.25      3664   0.0179434   0.0169254
+    3      15      2648      2633   3509.99      3412   0.0191195   0.0172601
+    4      15      3499      3484   3483.36      3404   0.0182632   0.0173826
+    5      16      4392      4376   3500.19      3568  0.00700597   0.0173205
+    6      15      5298      5283   3521.38      3628   0.0172061   0.0172094
+    7      15      6220      6205   3545.12      3688   0.0293652    0.017113
+    8      15      7149      7134   3566.42      3716   0.0104744   0.0170089
+    9      15      8040      8025   3566.11      3564    0.031283   0.0170119
+   10      15      8968      8953   3580.66      3712   0.0170771   0.0169471
+   11      15      9747      9732   3538.38      3116   0.0108583   0.0171563
+   12      15     10687     10672    3556.8      3760   0.0115574   0.0170706
+   13      15     11619     11604   3569.94      3728  0.00980829   0.0170054
+   14      16     12538     12522    3577.2      3672   0.0277019   0.0169686
+   15      15     13369     13354   3560.56      3328   0.0254911   0.0170488
+   16      15     14214     14199   3549.26      3380   0.0071993   0.0171083
+   17      15     15086     15071   3545.63      3488   0.0103687   0.0171243
+   18      15     15962     15947   3543.29      3504   0.0629232    0.017126
+   19      15     16870     16855   3547.93      3632   0.0120248   0.0171147
+2017-06-05 13:28:16.804556 min lat: 0.00432259 max lat: 0.10379 avg lat: 0.0170747
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+   20      16     17799     17783   3556.11      3712  0.00720202   0.0170747
+Total time run:       20.037180
+Total reads made:     17799
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   3553.19
+Average IOPS:         888
+Stddev IOPS:          42
+Max IOPS:             940
+Min IOPS:             779
+Average Latency(s):   0.0170967
+Max latency(s):       0.10379
+Min latency(s):       0.00432259
