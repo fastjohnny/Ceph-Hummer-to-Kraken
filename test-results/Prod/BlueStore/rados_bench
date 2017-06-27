@@ -1,0 +1,86 @@
+#### rados bench -p scbench 100 write --no-cleanup
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+  100      16     29508     29492   1179.55         0           -   0.0528431
+Total time run:         107.367298
+Total writes made:      29509
+Write size:             4194304
+Object size:            4194304
+Bandwidth (MB/sec):     1099.37
+Stddev Bandwidth:       343.877
+Max bandwidth (MB/sec): 1288
+Min bandwidth (MB/sec): 0
+Average IOPS:           274
+Stddev IOPS:            85
+Max IOPS:               322
+Min IOPS:               0
+Average Latency(s):     0.0581984
+Stddev Latency(s):      0.230744
+Max latency(s):         10.6182
+Min latency(s):         0.0255232
+
+#### rados bench -p scbench 10 seq
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      15       292       277   1104.87      1108   0.0818695     0.05302
+    2      15       663       648   1293.81      1484   0.0289158   0.0467607
+    3      16      1062      1046   1393.02      1592   0.0239801   0.0436111
+    4      15      1499      1484   1482.21      1752   0.0286997   0.0410985
+    5      15      1871      1856   1483.25      1488   0.0371613   0.0409578
+    6      15      2253      2238   1490.29      1528    0.037953   0.0408972
+    7      15      2673      2658   1517.33      1680   0.0214038   0.0402289
+    8      15      3066      3051   1523.95      1572   0.0319984   0.0400696
+    9      16      3473      3457   1535.03      1624   0.0464829   0.0397626
+   10      16      3857      3841   1535.11      1536   0.0365005   0.0397409
+Total time run:       10.054549
+Total reads made:     3857
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   1534.43
+Average IOPS:         383
+Stddev IOPS:          43
+Max IOPS:             438
+Min IOPS:             277
+Average Latency(s):   0.0398733
+Max latency(s):       0.259625
+Min latency(s):       0.0186344
+
+#### rados bench -p scbench 20 rand
+hints = 1
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+    0       0         0         0         0         0           -           0
+    1      15       387       372   1487.61      1488   0.0637381   0.0399348
+    2      15       791       776   1551.64      1616   0.0412586   0.0389434
+    3      16      1184      1168      1557      1568   0.0285431   0.0388074
+    4      16      1558      1542   1541.67      1496    0.029554   0.0394765
+    5      15      2005      1990   1591.68      1792   0.0371131   0.0383551
+    6      15      2427      2412   1607.69      1688   0.0336644   0.0379664
+    7      15      2837      2822   1612.27      1640   0.0545297   0.0378774
+    8      15      3244      3229   1614.22      1628   0.0400586    0.037785
+    9      15      3675      3660    1626.4      1724   0.0750005   0.0374893
+   10      15      4136      4121   1648.14      1844   0.0274504   0.0370783
+   11      15      4529      4514    1641.2      1572   0.0434016   0.0372388
+   12      15      4866      4851   1616.75      1348   0.0349596   0.0377641
+   13      15      5242      5227   1608.06      1504    0.020462   0.0379985
+   14      15      5617      5602   1600.33      1500   0.0322019   0.0381746
+   15      16      6066      6050    1613.1      1792   0.0199184   0.0378984
+   16      15      6492      6477   1619.01      1708   0.0469629    0.037769
+   17      15      6909      6894   1621.88      1668   0.0659402   0.0376737
+   18      15      7339      7324   1627.32      1720   0.0375734   0.0375695
+   19      15      7759      7744   1630.08      1680    0.031826   0.0375105
+2017-06-27 08:27:58.207562 min lat: 0.00326583 max lat: 0.283821 avg lat: 0.037572
+  sec Cur ops   started  finished  avg MB/s  cur MB/s last lat(s)  avg lat(s)
+   20      15      8156      8141   1627.96      1588    0.030087    0.037572
+Total time run:       20.042055
+Total reads made:     8157
+Read size:            4194304
+Object size:          4194304
+Bandwidth (MB/sec):   1627.98
+Average IOPS:         406
+Stddev IOPS:          30
+Max IOPS:             461
+Min IOPS:             337
+Average Latency(s):   0.0376109
+Max latency(s):       0.283821
+Min latency(s):       0.00326583
+

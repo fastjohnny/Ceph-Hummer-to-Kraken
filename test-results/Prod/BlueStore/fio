@@ -1,0 +1,34 @@
+root@cz9024-str01:/opt/fio# ./fio examples/rbd.fio 
+rbd_iodepth32: (g=0): rw=randwrite, bs=(R) 4096B-4096B, (W) 4096B-4096B, (T) 4096B-4096B, ioengine=rbd, iodepth=32
+fio-2.21-65-gdb84
+Starting 1 process
+Jobs: 1 (f=1): [w(1)][100.0%][r=0KiB/s,w=4896KiB/s][r=0,w=1224 IOPS][eta 00m:00s]
+rbd_iodepth32: (groupid=0, jobs=1): err= 0: pid=67315: Tue Jun 27 08:19:09 2017
+  write: IOPS=3568, BW=13.9MiB/s (14.6MB/s)(2048MiB/146905msec)
+    slat (usec): min=2, max=1381, avg= 7.46, stdev= 4.62
+    clat (msec): min=3, max=265, avg= 8.96, stdev= 7.42
+     lat (msec): min=3, max=265, avg= 8.96, stdev= 7.42
+    clat percentiles (msec):
+     |  1.00th=[    5],  5.00th=[    6], 10.00th=[    6], 20.00th=[    7],
+     | 30.00th=[    7], 40.00th=[    8], 50.00th=[    9], 60.00th=[    9],
+     | 70.00th=[   10], 80.00th=[   11], 90.00th=[   13], 95.00th=[   14],
+     | 99.00th=[   23], 99.50th=[   27], 99.90th=[  120], 99.95th=[  222],
+     | 99.99th=[  247]
+   bw (  KiB/s): min=  560, max=17490, per=100.00%, avg=14306.44, stdev=2353.20, samples=293
+   iops        : min=  140, max= 4372, avg=3576.59, stdev=588.29, samples=293
+    lat (msec) : 4=0.01%, 10=72.34%, 20=26.23%, 50=1.28%, 100=0.04%
+    lat (msec) : 250=0.10%, 500=0.01%
+  cpu          : usr=33.47%, sys=65.18%, ctx=446656, majf=0, minf=188790
+  IO depths    : 1=0.1%, 2=0.1%, 4=0.1%, 8=0.1%, 16=0.1%, 32=100.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.1%, 64=0.0%, >=64=0.0%
+     issued rwt: total=0,524288,0, short=0,0,0, dropped=0,0,0
+     latency   : target=0, window=0, percentile=100.00%, depth=32
+
+Run status group 0 (all jobs):
+  WRITE: bw=13.9MiB/s (14.6MB/s), 13.9MiB/s-13.9MiB/s (14.6MB/s-14.6MB/s), io=2048MiB (2147MB), run=146905-146905msec
+
+Disk stats (read/write):
+    dm-0: ios=0/161, merge=0/0, ticks=0/680, in_queue=680, util=0.12%, aggrios=0/105, aggrmerge=0/85, aggrticks=0/356, aggrin_queue=356, aggrutil=0.12%
+  sda: ios=0/105, merge=0/85, ticks=0/356, in_queue=356, util=0.12%
+
